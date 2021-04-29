@@ -55,6 +55,8 @@ export interface ModalProps extends FooterProps {
   onScrolledToBottom?(): void;
   /** The element or the RefObject that activates the Modal */
   activator?: React.RefObject<HTMLElement> | React.ReactElement;
+  /** Removes the overflow-y:auto prop */
+  noScroll?: boolean;
 }
 
 export const Modal: React.FunctionComponent<ModalProps> & {
@@ -79,6 +81,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
   onClose,
   onIFrameLoad,
   onTransitionEnd,
+  noScroll,
 }: ModalProps) {
   const [iframeHeight, setIframeHeight] = useState(IFRAME_LOADING_HEIGHT);
 
@@ -164,6 +167,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         shadow
         className={styles.Body}
         onScrolledToBottom={onScrolledToBottom}
+        vertical={!noScroll}
       >
         {body}
       </Scrollable>
