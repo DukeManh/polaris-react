@@ -153,6 +153,18 @@ export const Modal: React.FunctionComponent<ModalProps> & {
       content
     );
 
+    const scrollContainerMarkup = noScroll ? (
+      <div className={styles.Body}>{body}</div>
+    ) : (
+      <Scrollable
+        shadow
+        className={styles.Body}
+        onScrolledToBottom={onScrolledToBottom}
+      >
+        {body}
+      </Scrollable>
+    );
+
     const bodyMarkup = src ? (
       <iframe
         name={iFrameName}
@@ -163,14 +175,7 @@ export const Modal: React.FunctionComponent<ModalProps> & {
         style={{height: `${iframeHeight}px`}}
       />
     ) : (
-      <Scrollable
-        shadow
-        className={styles.Body}
-        onScrolledToBottom={onScrolledToBottom}
-        vertical={!noScroll}
-      >
-        {body}
-      </Scrollable>
+      scrollContainerMarkup
     );
 
     dialog = (
