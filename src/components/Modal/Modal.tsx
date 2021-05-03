@@ -55,7 +55,7 @@ export interface ModalProps extends FooterProps {
   onScrolledToBottom?(): void;
   /** The element or the RefObject that activates the Modal */
   activator?: React.RefObject<HTMLElement> | React.ReactElement;
-  /** Removes the overflow-y:auto from the modal contents */
+  /** Removes Scrollable container from the modal content */
   noScroll?: boolean;
 }
 
